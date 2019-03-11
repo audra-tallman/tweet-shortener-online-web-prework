@@ -19,17 +19,25 @@ def word_substituter (tweet)
       word = dictionary[word.downcase]
     else
       word
-  end
-end.join (" ")
+    end
+  end.join (" ")
 end
 
-def bulk_tweet_shortener (tweet)
+def bulk_tweet_shortener (tweets)
+  tweets.each do |tweet|
+    puts word_substituter(tweet)
+  end
 end
 
 def selective_tweet_shortener (tweet)
-  tweet_length = tweet.length < 140
+  if tweet.length > 140
+    word_substituter(tweet)
+  else
+    tweet
+  end
 end
 
 def shortened_tweet_truncator (tweet)
-  string[0...140]
-end
+  if word_substituter(tweet).length > 140
+    word_stubstituter(tweet)[0..136] + '...'
+/end
